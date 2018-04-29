@@ -1,0 +1,274 @@
+
+/*
+ * CSE 311
+ * Tic-Tac-Toe MVC - GUIView 
+ * February 19, 2018 
+ * Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ * The purpose of this project is to demonstrate understanding of the MVC software architecture 
+ * by creating 2 different views, a model, and controller for the game Tic Tac Toe. 
+ */
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+/**
+ * @author  Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ */
+public class GUIView {
+ private ArrayList<Integer> p1 = new ArrayList<Integer>();
+ private ArrayList<Integer> p2 = new ArrayList<Integer>();
+ private static JPanel panel;
+ private static Boolean xTurn;
+ private JButton b1;
+ private JButton b2;
+ private JButton b3;
+ private JButton b4;
+ private JButton b5;
+ private JButton b6;
+ private JButton b7;
+ private JButton b8;
+ private JButton b9;
+
+ /**
+  * This is the constructor for the GUI, it creates the
+ *         board, initiates the buttons, adds the action listeners
+  */
+ public GUIView() {
+  xTurn = true;
+  JFrame frame = new JFrame();
+  panel = new JPanel();
+  panel.setLayout(new GridLayout(3, 3));
+  frame.add(panel);
+
+  b1 = new JButton();
+  b1.setText(Integer.toString(1));
+  panel.add(b1);
+
+  b2 = new JButton();
+  b2.setText(Integer.toString(2));
+  panel.add(b2);
+
+  b3 = new JButton();
+  b3.setText(Integer.toString(3));
+  panel.add(b3);
+
+  b4 = new JButton();
+  b4.setText(Integer.toString(4));
+  panel.add(b4);
+
+  b5 = new JButton("5");
+  b5.setText(Integer.toString(5));
+  panel.add(b5);
+
+  b6 = new JButton("6");
+  b6.setText(Integer.toString(6));
+  panel.add(b6);
+
+  b7 = new JButton("7");
+  b7.setText(Integer.toString(7));
+  panel.add(b7);
+
+  b8 = new JButton("8");
+  b8.setText(Integer.toString(8));
+  panel.add(b8);
+
+  b9 = new JButton("9");
+  b9.setText(Integer.toString(9));
+  panel.add(b9);
+  b1.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(1);
+     b1.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(1);
+     b1.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+
+  b2.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(2);
+     b2.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(2);
+     b2.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+
+  b3.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(3);
+     b3.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(3);
+     b3.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+
+  b4.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(4);
+     b4.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(4);
+     b4.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+
+  b5.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(5);
+     b5.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(5);
+     b5.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+
+  b6.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(6);
+     b6.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(6);
+     b6.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+
+  b7.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(7);
+     b7.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(7);
+     b7.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+
+  b8.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(8);
+     b8.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(8);
+     b8.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+
+  b9.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+    if (xTurn) {
+     p1.add(9);
+     b9.setText("X");
+     xTurn = false;
+    } else {
+     p2.add(9);
+     b9.setText("O");
+     xTurn = true;
+    }
+   }
+  });
+  frame.setSize(300, 300);
+  frame.setLocationRelativeTo(null);
+  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  frame.setVisible(true);
+ }
+
+ /**
+  * @return This method gets the positions for player 1
+  */
+ public ArrayList<Integer> getP1() {
+  return p1;
+ }
+
+ /**
+  * @return This method gets the positions for player 2
+  */
+ public ArrayList<Integer> getP2() {
+  return p2;
+ }
+
+ /**
+  * This method displays a screen displaying that X has won
+  */
+ public void xWon() {
+  JFrame frame = new JFrame();
+  JPanel p3 = new JPanel();
+  JLabel label = new JLabel("X WON!");
+  p3.add(label);
+  frame.add(p3);
+  frame.setSize(300, 100);
+  frame.setLocationRelativeTo(null);
+  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  frame.setVisible(true);
+ }
+
+ /**
+  * This method displays a screen that O has won
+  */
+ public void oWon() {
+  JFrame frame = new JFrame();
+  JPanel p3 = new JPanel();
+  JLabel label = new JLabel("O WON!");
+  p3.add(label);
+  frame.add(p3);
+  frame.setSize(300, 100);
+  frame.setLocationRelativeTo(null);
+  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  frame.setVisible(true);
+ }
+
+ /**
+  * This method displays a screen that the game is tied
+  */
+ public void tied() {
+  JFrame frame = new JFrame();
+  JPanel p3 = new JPanel();
+  JLabel label = new JLabel("YOU TIED");
+  p3.add(label);
+  frame.add(p3);
+  frame.setSize(300, 100);
+  frame.setLocationRelativeTo(null);
+  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  frame.setVisible(true);
+ }
+
+}
