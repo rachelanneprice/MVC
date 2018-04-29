@@ -1,0 +1,93 @@
+*
+ * CSE 311
+ * Tic-Tac-Toe MVC - Model Class 
+ * February 19, 2018 
+ * Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ * The purpose of this project is to demonstrate understanding of the MVC software architecture 
+ * by creating 2 different views, a model, and controller for the game Tic Tac Toe. 
+ */
+import java.util.ArrayList;
+
+
+/**
+ * @author Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ * This is the Model class, it stores the game information and determines the winner of the game 
+ *
+ */
+public class Model {
+ private ArrayList<Integer> p1;
+ private ArrayList<Integer> p2;
+ final int[][] winningConditions = { { 1, 2, 3 }, { 1, 4, 7 }, { 1, 5, 9 }, { 4, 5, 6 }, { 2, 5, 8 }, { 7, 8, 9 },
+   { 3, 6, 9 }, { 3, 7, 5 } };
+
+ /**
+  * @param p1
+  * @param p2
+  * @param xTurn
+  * tThis is the constructor for the model, it takes in 2 ArrayList 
+  * for the players and which player's turn it is 
+  */
+ public Model(ArrayList<Integer> p1, ArrayList<Integer> p2) {
+  this.p1 = p1;
+  this.p2 = p2;
+ }
+
+ /**
+  * @return
+  * This method gets the positions for player 1 
+  */
+ public ArrayList<Integer> getP1() {
+  return p1;
+ }
+
+ /**
+  * @return
+  * This method gets the positions for player 2
+  */
+ public ArrayList<Integer> getP2() {
+  return p2;
+ }
+
+ /**
+  * @param curPos
+  * This method adds the current position to player 1 
+  */
+ public void addP1(int curPos) {
+  p1.add(curPos);
+ }
+
+ /**
+  * @param curPos
+  * This method adds the current position to player 2 
+  */
+ public void addP2(int curPos) {
+  p2.add(curPos);
+ }
+
+
+ /**
+  * @param playerPos
+  * @return
+  * This method determines the winner of the game based on the preset winning conditions 
+  */
+ public boolean hasWon(ArrayList<Integer> playerPos) {
+  int winning = 0;
+  for (int i = 0; i < winningConditions.length; i++) {
+   winning = 0;
+   for (int j = 0; j < winningConditions[i].length; j++) {
+    if (playerPos.contains(winningConditions[i][j])) {
+     winning++;
+    }
+   }
+   if (winning == 3) {
+    return true;
+   }
+  }
+  return false;
+ }
+
+ public void clear() {
+  p1.clear();
+  p2.clear();
+ }
+}
