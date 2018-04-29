@@ -1,0 +1,148 @@
+
+/*
+ * CSE 311
+ * Tic-Tac-Toe MVC - TextView Class
+ * February 19, 2018 
+ * Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ * The purpose of this project is to demonstrate understanding of the MVC software architecture 
+ * by creating 2 different views, a model, and controller for the game Tic Tac Toe. 
+ */
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * @author Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ *
+ */
+public class TextView {
+ private ArrayList<Integer> p1;
+ private ArrayList<Integer> p2;
+ //private int curPos;
+ private boolean xTurn = true;
+ private boolean gameOver;
+
+ // /**
+ // * @param xTurn
+ // * @param wrong
+ // * T
+ // */
+ // public void PromptUser(Boolean xTurn , Boolean wrong) {
+ //
+ // Scanner in = new Scanner(System.in);
+ // if(xTurn) {
+ // if(wrong) {
+ // System.out.println("Enter a Different Position: ");
+ //
+ // }
+ // else {
+ // System.out.println("X Enter a position:");
+ // }
+ // curPos = in.nextInt();
+ // p1.add(curPos);
+ //
+ // }
+ // else {
+ // if(wrong) {
+ // System.out.println("Enter a Different Position: ");
+ // }
+ // else {
+ // System.out.println("O Enter a position:");
+ // }
+ // curPos = in.nextInt();
+ // p2.add(curPos);
+ // }
+ //
+ //
+ //
+ // }
+
+ /**
+  * @return
+  */
+ public ArrayList<Integer> getP1() {
+  return p1;
+ }
+
+ /**
+  * @return
+  */
+ public ArrayList<Integer> getP2() {
+  return p2;
+ }
+
+ /**
+  * 
+  */
+ public TextView() {
+  super();
+  p1 = new ArrayList<Integer>();
+  p2 = new ArrayList<Integer>();
+  System.out.println("Game Board Positions");
+  System.out.println("+---+---+---+");
+  System.out.println("| 1 | 2 | 3 |");
+  System.out.println("+---+---+---+");
+  System.out.println("| 4 | 5 | 6 |");
+  System.out.println("+---+---+---+");
+  System.out.println("| 7 | 8 | 9 |");
+  System.out.println("+---+---+---+");
+  Scanner in = new Scanner(System.in);
+  //while(p1.size() < 5 && gameOver == false) {
+  do {
+   if (xTurn) {
+    
+    // if(wrong) {
+    // System.out.println("Enter a Different Position: ");
+    //
+    // }
+    // else {
+    System.out.println("X Enter a position:");
+    // }
+    // curPos = in.nextInt();
+    p1.add(in.nextInt());
+    xTurn = false;
+
+   } else {
+   
+    // if(wrong) {
+    // System.out.println("Enter a Different Position: ");
+    // }
+    // else {
+    System.out.println("O Enter a position:");
+    // }
+    // curPos = in.nextInt();
+    p2.add(in.nextInt());
+    xTurn = true;
+
+  }
+   
+  }
+  
+  while(isGameOver() == false && p1.size() < 5);
+  in.close();
+ }
+ 
+
+ public void xWon() {
+  setGameOver(true);
+  System.out.println("X WON!");
+ }
+
+ public void oWon() {
+  setGameOver(true);
+  System.out.println("O WON!");
+ }
+
+ public void tied() {
+  setGameOver(true);
+  System.out.println("You Tied!");
+ }
+
+ public boolean isGameOver() {
+  return gameOver;
+ }
+
+ public void setGameOver(boolean gameOver) {
+  this.gameOver = gameOver;
+ }
+
+}
