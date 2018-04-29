@@ -1,0 +1,108 @@
+/*
+ * CSE 311
+ * Tic-Tac-Toe MVC - JUnit Tests 
+ * February 19, 2018 
+ * Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ * The purpose of this project is to demonstrate understanding of the MVC software architecture 
+ * by creating 2 different views, a model, and controller for the game Tic Tac Toe. 
+ */import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * @author emilyrichmond
+ *
+ */
+public class TicTacToeTest {
+ private ArrayList<Integer> p1;
+ 
+ private ArrayList<Integer> p2;
+ private Model model;
+ 
+ @Before
+ public void setUp(){
+  p1 = new ArrayList<Integer>();
+  p2 = new ArrayList<Integer>();
+  model = new Model(p1,p2);
+  
+ }
+ 
+ @After 
+ public void tearDown() {
+  p1.clear();
+  p2.clear();
+  model.clear();
+  
+ }
+ 
+ //=== MODEL TESTS ===============================
+ 
+ 
+ /**
+  * Tests every possible winning combination 
+  */
+ @Test
+ public void testHasWonAllWays(){
+  model.addP1(1);
+  model.addP1(5);
+  model.addP1(9);
+  assertEquals(true, model.hasWon(p1));
+  model.getP1().clear();
+  model.addP2(1);
+  model.addP2(2);
+  model.addP2(3);
+  assertEquals(true, model.hasWon(p2));
+  model.getP2().clear();
+  model.addP1(3);
+  model.addP1(5);
+  model.addP1(7);
+  assertEquals(true, model.hasWon(p1));
+  model.getP1().clear();
+  model.addP2(4);
+  model.addP2(5);
+  model.addP2(6);
+  assertEquals(true, model.hasWon(p2));
+  model.getP2().clear();
+  model.addP1(7);
+  model.addP1(8);
+  model.addP1(9);
+  assertEquals(true, model.hasWon(p1));
+  model.getP1().clear();
+  model.addP2(1);
+  model.addP2(4);
+  model.addP2(7);
+  assertEquals(true, model.hasWon(p2));
+  model.getP2().clear();
+  model.addP1(2);
+  model.addP1(5);
+  model.addP1(8);
+  assertEquals(true, model.hasWon(p1));
+  model.getP1().clear();
+  model.addP2(3);
+  model.addP2(6);
+  model.addP2(9);
+  model.addP2(2);
+  assertEquals(true, model.hasWon(p2));
+ }
+ 
+ /**
+  * 
+  */
+ @Test
+ public void testHasWonFalse(){
+  model.addP1(1);
+  model.addP1(2);
+  model.addP1(4);
+  model.addP1(8);
+  assertEquals(false, model.hasWon(p1));
+
+  
+  
+ }
+ 
+
+}
