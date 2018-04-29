@@ -1,0 +1,116 @@
+
+/*
+ * CSE 311
+ * Tic-Tac-Toe MVC - Controller Class 
+ * February 19, 2018 
+ * Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ * The purpose of this project is to demonstrate understanding of the MVC software architecture 
+ * by creating 2 different views, a model, and controller for the game Tic Tac Toe. 
+ */
+import java.util.ArrayList;
+
+/**
+ * @author Emily Richmond, Ed Zapanta, Rachel Price, Nick Romeo
+ * This is the Controller class, it is aware of both the view(s) and the model. 
+ * This class determines whether the game is on or over, and determines the player's turn. 
+ *
+ */
+public class Controller {
+ private static Model model;
+ private static TextView view;
+
+ /**
+  * @param args
+  * This is the main method, it creates the model and 
+  * view and calls the gameState method. 
+  */
+ public static void main(String[] args) {
+  ArrayList<Integer> p1 = new ArrayList<Integer>();
+  ArrayList<Integer> p2 = new ArrayList<Integer>();
+  boolean xTurn = true;
+  model = new Model(p1, p2);
+  view = new TextView();
+
+  gameState(model, view, xTurn, p1, p2);
+
+ }
+
+ /**
+  * @param model
+  * @param view
+  * @param xTurn
+  * @param p1
+  * @param p2
+  * This is the gameState method, it controls whether or 
+  * not the game is over and determines the player turn and who won
+  */
+ public static void gameState(Model model, TextView view, Boolean xTurn, ArrayList<Integer> p1,
+   ArrayList<Integer> p2) {
+
+  boolean gameOver = false;
+ //boolean wrong = false;
+  while (!gameOver) {
+
+   if (xTurn) {
+
+    // ------------------------Text View Only------------------------
+    // This is used for error checking because the board is not shown
+    // view.PromptUser(xTurn, wrong);
+    // while(p1.contains(view.getCurPos()) || p2.contains(view.getCurPos())) {
+    // wrong = true;
+    // view.PromptUser(xTurn, wrong);
+    // }
+    // wrong = false;
+    // --------------------------------------------------------------
+
+    for (int i = 0; i < view.getP1().size(); i++) {
+     if (!model.getP1().contains(view.getP1().get(i))) {
+      model.addP1(view.getP1().get(i));
+     }
+
+    }
+
+    if (!model.hasWon(p1) && view.getP1().size() == 5) {
+    
+     gameOver = true;
+     view.tied();
+    }
+
+    else if (model.hasWon(model.getP1())) {
+     
+     view.xWon();
+     gameOver = true;
+    }
+
+    xTurn = false;
+
+   } else {
+    // ------------------------Text View Only------------------------
+    // This is used for error checking because the board is not shown
+    // view.PromptUser(xTurn, wrong);
+    // while(p1.contains(view.getCurPos()) || p2.contains(view.getCurPos())) {
+    // wrong = true;
+    // view.PromptUser(xTurn, wrong);
+    // }
+    // wrong = false;
+    // --------------------------------------------------------------
+    for (int i = 0; i < view.getP2().size(); i++) {
+     if (!model.getP2().contains(view.getP2().get(i))) {
+      model.addP2(view.getP2().get(i));
+     }
+
+    }
+
+    if (model.hasWon(model.getP2())) {
+     
+     view.oWon();
+     gameOver = true;
+
+    }
+    xTurn = true;
+
+   }
+  }
+
+ }
+}
